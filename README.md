@@ -1,5 +1,5 @@
-# gpt-tools
-gpt tools
+# gpt-app
+gpt app
 
 First,integrated wechat message auto reply by gpt3.5, env variables are completed later.
 
