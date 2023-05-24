@@ -1,8 +1,8 @@
 import os
 import openai
 
-openai.organization = "YOUR organization"
-openai.api_key = "YOUR API KEY"
+openai.organization = os.getenv("openai_organization")
+openai.api_key = os.getenv("openai_api_key")
 # openai.Model.list()
 
 class Gpt(object):
@@ -19,9 +19,20 @@ class Gpt(object):
     # print(resp)
 
     def gpt_image(self, msg, format='url'):
-        resp = openai.Image.create(prompt=msg, n=1, size="1024x1024", response_format=format)
+        resp = openai.Image.create(prompt=msg, n=3, size="1024x1024", response_format=format)
         data = resp['data'][0][format]
+        import io
+        with open("image.txt", 'wb') as image:
+            for _ in resp['data']:
+                image.write(_[format] + '\n')
+
         return data
+
+if __name__ == '__main__':
+    msg = "狗狗拿铲子的漫画"
+    resp = Gpt().gpt_image(msg)
+    print(resp)
+
 # resp = openai.Image.create(prompt="狗狗拿铲子的漫画", n=1, size="1024x1024", response_format="b64_json")
 # print(resp)
 # import base64
