@@ -9,10 +9,14 @@ First,integrated wechat message auto reply by gpt3.5, env variables are complete
 1)pip install -r requirements.txt
 
 2)gpt配置在gpt_env.py中，
+
   openai_organization = "YOUR organization"
+  
   openai_api_key = "YOUR API KEY"
   
+  
   微信好友过滤在settings.py添加，
+  
   wechat_friend_keyword = ["机器人", "蜡笔"]
 
 2)python app.py
